@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="icon" href="logo.jpg">
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    .calculator {
+      width: 300px;
+      height: auto;
+      margin: 20px auto;
+      border: 3px solid #000000;
+      background-color: #2E236C;
+      padding: 15px;
+      border-radius: 5%;
+    }
+    .display {
+      background-color: #C8ACD6;
+      color: #fff;
+      padding: 10px;
+      text-align: right;
+      font-size: 18px;
+      margin-bottom: 10px;
+      border-radius: 10%;
+    }
+    .button-row {
+      display: flex;
+    }
+    button {
+      flex: 1;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 10%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #433D8B;
+      color: #ffffff;
+    }
+    button:active {
+      background-color: #17153B;
+      color: #ffffff;
+    }
+    .parallax-content {
+      width: 100%;
+      background-size: cover;
+    }
+    .baner-content {
+      width: 100%;
+      padding-top: 15vh;
+      padding-bottom: 29vh;
+      text-align: center;
+      background-image: url(sunrise.jpg);
+      vertical-align: middle;
+    }
+    .text-content h2 {
+      font-size: 40px;
+      font-weight: 400;
+      color: #fff;
+    }
+    .text-content h2 span {
+      font-weight: 700;
+      color: #9833cf!important;
+    }
+    .text-content h2 em {
+      font-style: normal;
+      font-weight: 700;
+      color: #2E073F!important;
+    }
+
+    /* Media Query untuk tampilan handphone */
+    @media (max-width: 480px) {
+      .calculator {
+        width: 90%;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .display {
+        font-size: 16px;
+        padding: 8px;
+        border-radius: 8px;
+      }
+      button {
+        font-size: 14px;
+        padding: 8px;
+        margin: 4px;
+        border-radius: 8px;
+      }
+      .text-content h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="parallax-content baner-content">
+    <div class="text-content">
+      <h2><em>This is</em> <span>Calculator</span></h2>
+    </div>
+
+    <div class="calculator">
+      <div class="display" id="display">0</div>
+      <div class="button-row">
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="deleteLastChar()">DEL</button>
+        <button onclick="appendOperator('/')">/</button>
+        <button onclick="appendOperator('*')">x</button>
+      </div>
+      <div class="button-row">
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button onclick="appendOperator('-')">-</button>
+      </div>
+      <div class="button-row">
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button onclick="appendOperator('+')">+</button>
+      </div>
+      <div class="button-row">
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button onclick="calculate()">=</button>
+      </div>
+      <div class="button-row">
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="appendNumber('.')">.</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById('display');
+    let currentInput = '0';
+
+    function updateDisplay() {
+      display.textContent = currentInput;
+    }
+
+    function appendNumber(num) {
+      if (currentInput === '0') {
+        currentInput = num;
+      } else {
+        currentInput += num;
+      }
+      updateDisplay();
+    }
+
+    function appendOperator(operator) {
+      currentInput += operator;
+      updateDisplay();
+    }
+
+    function clearDisplay() {
+      currentInput = '0';
+      updateDisplay();
+    }
+
+    function deleteLastChar() {
+      currentInput = currentInput.slice(0, -1);
+      if (currentInput === '') {
+        currentInput = '0';
+      }
+      updateDisplay();
+    }
+
+    function calculate() {
+      try {
+        currentInput = eval(currentInput).toString();
+      } catch (error) {
+        currentInput = 'Error';
+      }
+      updateDisplay();
+    }
+
+    updateDisplay();
+  </script>
+
+</body>
+</html>

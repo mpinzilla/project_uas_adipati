@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" href="penguin.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS Style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #629584;
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.hide {
+            transform: translateX(-100%);
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.sidebar-hidden {
+            margin-left: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        header button {
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 24px;
+            color: #666;
+        }
+
+        .card:hover {
+            background-color: #E2F1E7;
+            color: #ECDFCC;
+            transform: scale(1.05);
+        }
+
+        .recent-posts {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .recent-posts h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        table thead {
+            background-color: #387478;
+            color: #fff;
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f4f4f9;
+        }
+
+        table tbody tr:hover {
+            background-color: #d4e9e2;
+            cursor: pointer;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .sidebar {
+                position: absolute;
+                transform: translateX(-100%);
+                z-index: 1;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Users</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content" id="main-content">
+        <header>
+            <h1>Welcome, Adipati</h1>
+            <button onclick="toggleSidebar()">=</button>
+        </header>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Users</h3>
+                <p>500</p>
+            </div>
+            <div class="card">
+                <h3>Total Posts</h3>
+                <p>45</p>
+            </div>
+            <div class="card">
+                <h3>Total Activity</h3>
+                <p>200</p>
+            </div>
+        </div>
+
+        <div class="recent-posts">
+            <h2>Recent Posts</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Introduction to JavaScript</td>
+                        <td>Aditya</td>
+                        <td>15 October 2024</td>
+                        <td>Published</td>
+                    </tr>
+                    <tr>
+                        <td>Understanding CSS Grid</td>
+                        <td>Zidan</td>
+                        <td>14 October 2024</td>
+                        <td>Draft</td>
+                    </tr>
+                    <tr>
+                        <td>HTML Basics</td>
+                        <td>Daniel</td>
+                        <td>12 October 2024</td>
+                        <td>Published</td>
+                    </tr>
+                    <tr>
+                        <td>Advanced CSS Techniques</td>
+                        <td>Han</td>
+                        <td>10 October 2024</td>
+                        <td>Published</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

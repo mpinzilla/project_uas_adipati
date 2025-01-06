@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Form</title>
+        <link rel="icon" href="hat.jpg" type="image/x-icon">
+
+        <style>    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('halloween.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 850px;
+            display: flex;
+            background: transparent;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px 40px;
+            color: #000000;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .login {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        form {
+            width: 80%;
+            margin: auto;
+        }
+        
+        h1 {
+            margin: 20px;
+            text-align: center;
+            font-weight: bolder;
+        }
+        
+        hr {
+            border-top: 2px solid #abdbe3;
+        }
+        
+        p {
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .right img {
+            width: 100%;
+            height: auto;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        
+        form label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px;
+        }
+        
+        input {
+            width: 100%;
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid gray;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            background: #000000;
+            border: none;
+        }
+        
+        button:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        button:active {
+            background: #DC5F00;
+            color: black;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .login {
+                width: 100%;
+            }
+
+            .right img {
+                display: none; /* Sembunyikan gambar pada layar kecil */
+            }
+        }
+
+        @media (max-width: 480px) {
+            form {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="login">
+                <form action="">
+                    <h1>Sign the Contract</h1>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="example01@gmail.com">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password">
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="right">
+                <img src="kiki pixel by 7014-G on DeviantArt.gif" alt="login image">
+            </div>
+        </div>
+    </body>
+</html>
